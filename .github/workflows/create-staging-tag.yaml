@@ -19,10 +19,6 @@ jobs:
         run: ./script/create-staging-tag.sh ${{ env.TARGET_BRANCH_OR_HASH }}
         env:
           TARGET_BRANCH_OR_HASH: ${{ inputs.target_branch_or_hash }}
-      # - name: Set up Git user information
-      #   run: |
-      #     git config user.name "GitHub Actions"
-      #     git config user.email "actions@github.com"
       - name: Push the latest staging tag to the remote repository
         run: |
           latest_tag=$(git tag | grep "^staging" | sort -Vr | head -n 1)
